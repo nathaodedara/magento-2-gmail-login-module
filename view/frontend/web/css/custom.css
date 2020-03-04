@@ -1,0 +1,19 @@
+.invi-login-gmail{
+ color:#d72828;
+ cursor: pointer;
+ font-size: 16px;
+}
+.invi-login-gmail:hover{
+ color:#d72828;
+ cursor: pointer;
+ font-size: 16px;
+ text-decoration: underline;
+}
+.invigorate-gmaillogin{
+ margin-bottom: 15px;
+}
+.google-logo{
+	font-size: 22px;
+	font-weight: bold;
+	color: orange-red;
+}

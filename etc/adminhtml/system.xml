@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="invigorate_gmaillogin_section" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Invigorate Gmail Login Integration</label>
+            <tab>security</tab>
+            <resource>Invigorate_GmailLogin::gmaillogin_config</resource>
+            <group id="gmaillogin_group" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Invigorate Gmail Login Integration Options</label>
+                <field id="gmaillogin_status" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="gmaillogin_clientid" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Client ID</label>
+                    <validate>required-entry</validate>
+                    <comment><![CDATA[Get your app Client ID by Clicking <a href="https://console.developers.google.com" target="_blank">Here</a>.]]></comment>
+                    <depends>
+                        <field id="gmaillogin_status">1</field>
+                    </depends>
+                </field>
+                <field id="gmaillogin_clientsecret" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Client Secret</label>
+                    <validate>required-entry</validate>
+                    <comment><![CDATA[Get your app Client Secret Key by Clicking <a href="https://console.developers.google.com" target="_blank">Here</a>.]]></comment>
+                    <depends>
+                        <field id="gmaillogin_status">1</field>
+                    </depends>
+                </field>
+                <field id="gmaillogin_btntext" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Button Text</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="gmaillogin_status">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

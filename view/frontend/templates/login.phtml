@@ -1,0 +1,62 @@
+<?php if (!$block->isUserLoggedIn()): ?>
+    <?php if ($block->isGoogleEnabled()): ?>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+  <script type="text/javascript">
+  
+  window.onLoadCallback = function(){
+    gapi.load('auth2', function() {
+      gapi.auth2.init({
+        client_id: "<?= /* @noEscape */ $block->getGoogleAppId(); ?>",
+        fetch_basic_profile: true,
+      }).then(function(){},function(){});
+    });
+  }
+  function loginGoogle(){
+    gapi.auth2
+        .getAuthInstance()
+        .signIn()
+        .then((googleUser) => {
+            onSignInGoogle(googleUser);
+        });
+  }
+  function onSignInGoogle(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    var data = {};
+    data.email = profile.getEmail();
+    data.firstname = profile.getGivenName();
+    data.lastname = profile.getFamilyName();
+    submitData(data);
+  }
+  </script>
+<?php endif;?>
+    <?php if ($block->isGoogleEnabled()): ?>
+<script>
+function submitData(data){
+    var form = document.createElement("form");
+    document.body.appendChild(form);
+    form.method = "POST";
+    form.action = "<?= /* @noEscape */ $block->getUrl('gmaillogin/account/process'); ?>";
+    for (var property in data) {
+      if (data.hasOwnProperty(property)) {
+        var element = document.createElement("INPUT");
+        element.name = ""+property;
+        element.type = "hidden";
+        element.value = data[property];
+        form.appendChild(element);
+      }
+    }
+    form.submit();
+}
+</script>
+<?php endif; ?>
+<?php endif; ?>
+
+<center>
+<div class="block">
+<?php if ($block->isGoogleEnabled()): ?>
+<br /><br />
+<div class="invigorate-gmaillogin invi-login-gmail social_button social_button_google" onclick="loginGoogle();">
+  <i class="fa fa-google google-logo" aria-hidden="true"></i>
+    <?= /* @noEscape */ __($block->getButtonText()); ?></a>
+<?php endif; ?>
+</div></center>

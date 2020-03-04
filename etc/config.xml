@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <invigorate_gmaillogin_section> 
+            <gmaillogin_group>
+                <gmaillogin_status>0</gmaillogin_status>
+                <gmaillogin_btntext>Login or Register with Google</gmaillogin_btntext>
+            </gmaillogin_group>
+        </invigorate_gmaillogin_section>
+    </default>
+</config>
